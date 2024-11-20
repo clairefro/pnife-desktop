@@ -4,15 +4,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ./main.js",
-    "build": "tsc"
+    "start": "electron ./dist/main.js",
+    "build": "npm run clean && tsc && npm run copy-non-ts",
+    "copy-non-ts": "copyfiles -E -f src/index.html dist/",
+    "clean": "rimraf dist/*"
   },
   "author": "Claire Froelich",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@types/node": "^22.9.1",
+    "copyfiles": "^2.4.1",
     "electron": "^33.2.0",
+    "rimraf": "^6.0.1",
     "typescript": "^5.6.3"
   }
 }
